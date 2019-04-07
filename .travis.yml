@@ -1,0 +1,17 @@
+language: julia
+
+julia:
+  - 0.7
+
+os:
+  - linux
+
+notifications:
+  email: mkolar@gmail.com
+
+addons:
+    apt_packages:
+        - gfortran
+
+after_success:
+    - julia -e 'import Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
